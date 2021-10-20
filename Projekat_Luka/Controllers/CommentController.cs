@@ -23,8 +23,8 @@ namespace Projekat_Luka.Controllers
         [HttpPost("add-comment")]
         public async Task<IActionResult> AddComment([FromBody] CommentDto commentDto)
         {
-            
             await _commentService.Add(commentDto);
+
             return Ok();
         }
 
@@ -32,6 +32,7 @@ namespace Projekat_Luka.Controllers
         public async Task<IActionResult> GetAllComments()
         {
             var allComments = await _commentService.GetAll();
+
             return Ok(allComments);
         }
 
@@ -39,6 +40,7 @@ namespace Projekat_Luka.Controllers
         public async Task<IActionResult> GetCommentById(int id)
         {
             var comment = await _commentService.GetById(id);
+
             return Ok(comment);
         }
 
@@ -46,16 +48,16 @@ namespace Projekat_Luka.Controllers
         public async Task<IActionResult> DeleteComment(int id)
         {
             await _commentService.Remove(id);
+
             return Ok(id);
-            
         }
 
         [HttpPut("edit-comment")]
         public async Task<IActionResult> EditComment([FromBody] CommentDto commentDto)
         {
             await _commentService.Edit(commentDto);
-            return Ok(commentDto);
 
+            return Ok(commentDto);
         }
     }
 }

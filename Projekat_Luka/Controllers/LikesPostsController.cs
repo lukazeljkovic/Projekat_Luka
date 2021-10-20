@@ -24,6 +24,7 @@ namespace Projekat_Luka.Controllers
         public IActionResult AddUser([FromBody] LikesPosts like)
         {
             _likesPostsService.Add(like);
+
             return Ok();
         }
 

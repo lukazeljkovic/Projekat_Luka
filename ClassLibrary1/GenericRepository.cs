@@ -26,11 +26,8 @@ namespace Repository
 
         public async Task Edit(T entity)
         {
-
             _context.Set<T>().Update(entity);
             _context.SaveChanges();
-
-            //await _context.SaveChangesAsync();
         }
 
         public async Task<IQueryable<T>> GetAll()
@@ -48,7 +45,6 @@ namespace Repository
             var entity = await GetById(id);
             
             entity.isDeleted = true;
-
             
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();

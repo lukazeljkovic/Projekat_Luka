@@ -24,6 +24,7 @@ namespace Projekat_Luka.Controllers
         public IActionResult AddUser([FromBody] User user)
         {
             _userService.Add(user);
+
             return Ok();
         }
 
@@ -47,16 +48,16 @@ namespace Projekat_Luka.Controllers
         public IActionResult DeleteUser(int id)
         {
             _userService.Remove(id);
+
             return Ok(id);
-          
         }
 
         [HttpPut("edit-user")]
         public async Task<IActionResult> EditPost([FromBody] User user)
         {
             await _userService.Edit(user);
-            return Ok(user);
 
+            return Ok(user);
         }
     }
 }

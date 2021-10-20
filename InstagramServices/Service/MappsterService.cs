@@ -12,16 +12,14 @@ namespace InstagramServices.Service
         {
             var config = new TypeAdapterConfig();
             config.NewConfig<PostDto, Post>();
-            
         }
 
         public static void CommentMapper()
         {
-            TypeAdapterConfig<Comment, CommentDto>
-                .NewConfig()
-                .Map(dest => dest.UserId,
-                src => src.User.Id,
-                src => src.User != null);
+            TypeAdapterConfig<Comment, CommentDto>.NewConfig()
+                                                  .Map(dest => dest.UserId,
+                                                       src => src.User.Id,
+                                                       src => src.User != null);
         }
     }
 }

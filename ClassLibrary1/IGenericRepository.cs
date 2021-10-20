@@ -14,8 +14,5 @@ namespace Repository
         Task Add(T entity);
         Task Remove(int id);
         Task Edit(T entity);
-
-
-
     }
 }

@@ -9,7 +9,6 @@ namespace Repository.Models
 {
     public class User : BaseModel
     {
-        
         [Required]
         public string Username { get; set; }
 
@@ -17,6 +16,5 @@ namespace Repository.Models
         public string Password { get; set; }
 
         public List<LikesPosts> LikesPosts { get; set; }
-
     }
 }

@@ -35,7 +35,7 @@ namespace Projekat_Luka
 
             services.AddTransient< ILikesPostsService, LikesPostsService>();
 
-            services.AddTransient< IUserService ,UserService >();
+            services.AddTransient< IUserService, UserService >();
 
             services.AddTransient<ICommentService, CommentService>();
 

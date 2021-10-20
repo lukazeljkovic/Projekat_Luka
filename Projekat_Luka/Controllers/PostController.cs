@@ -15,7 +15,6 @@ namespace Projekat_Luka.Controllers
     {
         public IPostService _postService;
         
-
         public PostController(IPostService postService)
         {
             _postService = postService;
@@ -24,16 +23,16 @@ namespace Projekat_Luka.Controllers
         [HttpPost("add-posts")]
         public async Task<IActionResult> AddPost([FromBody] PostDto postDto)
         {
-            
             await _postService.Add(postDto);
+
             return Ok();
         }
 
         [HttpGet("get-all-posts")]
         public async Task<IActionResult> GetAllPosts()
         {
-            
             var allPosts = await _postService.GetAll();
+
             return Ok(allPosts);
         }
 
@@ -41,23 +40,24 @@ namespace Projekat_Luka.Controllers
         public async Task<IActionResult> GetPostById(int id)
         {
             var post = await _postService.GetById(id);
+
             return Ok(post);
         }
 
          [HttpDelete("delete-post-by-id")]
          public async Task<IActionResult> DeletePost(int id)
          {
-             await _postService.Remove(id);
-            return Ok(id);
+            await _postService.Remove(id);
 
+            return Ok(id);
          }
 
         [HttpPut("edit-post")]
         public async Task<IActionResult> EditPost([FromBody] PostDto postDto)
         {
             await _postService.Edit(postDto);
-            return Ok(postDto);
 
+            return Ok(postDto);
         }
     }
 }

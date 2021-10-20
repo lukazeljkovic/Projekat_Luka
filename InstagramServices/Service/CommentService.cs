@@ -27,7 +27,6 @@ namespace InstagramServices.Service
         {
             var comments = await _commentRepository.GetAll();
             var listComments = comments.Include(x => x.User);
-            //var result = comments.Include(x => x.User).ToListAsync();
             var dtoComments = listComments.Select(Mapster.TypeAdapter.Adapt<CommentDto>);
 
             var result = dtoComments.ToList();
@@ -62,7 +61,6 @@ namespace InstagramServices.Service
         public async Task Remove(int id)
         {
              await _commentRepository.Remove(id);
-            
         }
 
         public async Task Edit (CommentDto commentDto)
@@ -76,8 +74,8 @@ namespace InstagramServices.Service
                 Id = commentDto.Id,
                 isDeleted = commentDto.isDeleted,
             };
+
             await _commentRepository.Edit(comment);
         }
-
     }
 }

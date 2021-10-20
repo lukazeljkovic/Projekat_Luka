@@ -15,7 +15,9 @@ namespace InstagramServices.Service.IService
         IGenericRepository<Post> _postRepository;
         IGenericRepository<User> _userRepository;
 
-        public LikesPostsService(IGenericRepository<LikesPosts> likesPostsRepository, IGenericRepository<User> userRepository, IGenericRepository<Post> postRepository)
+        public LikesPostsService(IGenericRepository<LikesPosts> likesPostsRepository,
+                                 IGenericRepository<User> userRepository,
+                                 IGenericRepository<Post> postRepository)
         {
             _likesPostsRepository = likesPostsRepository;
             _userRepository = userRepository;
@@ -24,11 +26,10 @@ namespace InstagramServices.Service.IService
 
         public async Task Add(LikesPosts like)
         {
-            
-            
-                var users = await _userRepository.GetAll();
-                var user = users.Include(x => x.LikesPosts).ThenInclude(x => x.Post).FirstOrDefault(x => x.Id == like.UserId);
-                user.LikesPosts.Add(like);
+            var users = await _userRepository.GetAll();
+            var user = users.Include(x => x.LikesPosts).ThenInclude(x => x.Post).FirstOrDefault(x => x.Id == like.UserId);
+            user.LikesPosts.Add(like);
+
             try
             {
                 await _userRepository.Edit(user);
@@ -37,19 +38,6 @@ namespace InstagramServices.Service.IService
                 {
                 var a = 2;
             }
-            // await _likesPostsRepository.Add(like);
-
-
-            //List<LikesPosts> userLikes = c.LikesPosts;
-            //userLikes.Add(like);
-
-
-            //Post post =  await _postRepository.GetById(like.PostId);
-            //List<LikesPosts> postLikes = post.LikesPosts;
-            //postLikes.Add(like);
-
-
-
         }
 
         public async Task Edit(LikesPosts like)
@@ -61,7 +49,6 @@ namespace InstagramServices.Service.IService
         {
             var users = _likesPostsRepository.GetAll();
             var result = await users;
-
 
             return await Task.Run(() => result.ToListAsync());
         }

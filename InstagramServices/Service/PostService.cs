@@ -28,13 +28,11 @@ namespace InstagramServices.Service
             var posts = await _postRepository.GetAll();
             var dtoPosts = posts.Select(post => new PostDto
             {
-
                 Content = post.Content,
                 DateCreated = post.DateCreated,
                 Id = post.Id,
                 isDeleted = post.isDeleted,
                 UserId = post.User != null ? post.User.Id : 0
-
             });
             var result = await dtoPosts.ToListAsync();
 
@@ -60,7 +58,6 @@ namespace InstagramServices.Service
         
         public async Task Add(PostDto postDto)
         {
-            
             var user = await _userRepository.GetById(postDto.UserId);
             var postMapped = TypeAdapter.Adapt<PostDto,Post>(postDto);
             postMapped.User = user;            
@@ -71,8 +68,6 @@ namespace InstagramServices.Service
         public async Task Remove(int id)
         {
              await _postRepository.Remove(id);
-            
-            
         }
 
         public async Task Edit(PostDto postDto)

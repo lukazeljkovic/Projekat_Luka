@@ -7,10 +7,8 @@ namespace Repository.Models
 {
     public class Comment : BaseModel
     {
-        
         [Required]
-        public string Content { get; set; }
-
+        public string Content { get; set; 
 
         [Required]
         public User User { get; set; }
@@ -20,8 +18,5 @@ namespace Repository.Models
 
         [Required]
         public int NumOfLikes { get; set; }
-
-
-
     }
 }

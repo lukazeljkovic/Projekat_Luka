@@ -7,7 +7,6 @@ namespace Repository.Models
 {
    public class Post : BaseModel
     {
-     
         [Required]
         public User User { get; set; }
 
@@ -19,7 +18,5 @@ namespace Repository.Models
 
         [Required]
         public int NumOfLikes { get; set; }
-
-
     }
 }

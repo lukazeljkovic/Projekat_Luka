@@ -12,6 +12,7 @@ namespace InstagramServices.Service
    public class UserService : IUserService
     {
         private IGenericRepository<User> _userRepository;
+
         public UserService(IGenericRepository<User> userRepository)
         {
             _userRepository = userRepository;
@@ -22,27 +23,24 @@ namespace InstagramServices.Service
             var users = await _userRepository.GetAll();
             var result = users.ToListAsync();
 
-
             return await Task.Run(() =>  result );
         }
 
         public async Task<User> GetById(int id)
         {
             var user = await _userRepository.GetById(id);
-            return  user;
 
+            return  user;
         }
 
         public async Task Add(User user)
         {
             await _userRepository.Add(user);
-            
         }
 
         public async Task Remove(int id)
         {
             await _userRepository.Remove(id);
-                    
         }
 
         public async Task Edit(User user)
